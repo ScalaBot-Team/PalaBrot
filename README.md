@@ -5,6 +5,6 @@ PalaBrot es un bot de Telegram que resume a través de distintas técnicas de pr
 
 Integrantes:
 - Juan Helios García Guzmán
--
+- David Ventas Mar�n
 -
 -
