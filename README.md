@@ -1,7 +1,10 @@
-# Plantilla del curso de desarrollo ágil 
+# PalaBrot: Un bot para hacer las conversaciones menos peñazo 
 
-Plantilla para el [curso de desarrollo ágil](https://jj.github.io/curso-tdd)
+PalaBrot es un bot de Telegram que resume a través de distintas técnicas de procesamiento del lenguaje natural los
+últimos n mensajes de un grupo de Telegram.
 
-Contiene el mínimo para un proyecto, incluyendo una GitHub action que
-comprueba la presencia de ciertos ficheros, un directorio para los
-tests, y otro para la documentación.
+Integrantes:
+- Juan Helios García Guzmán
+-
+-
+-
