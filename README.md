@@ -7,4 +7,6 @@ Integrantes:
 - Juan Helios García Guzmán
 - David Ventas Marín
 - Sergio Flor García
--
+- Blanca Cano Camarero   
+
+Este repositorio ha sido creado gracias a la plantilla  https://jj.github.io/curso-tdd/temas/git
