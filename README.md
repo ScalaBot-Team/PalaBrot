@@ -5,7 +5,7 @@ PalaBrot es un bot de Telegram que resume a través de distintas técnicas de pr
 mensajes en un grupo quiere conocer qué es lo que se ha dicho pero sin tener que leer el resto de la conversación.
 
 ## Tipo de aplicación y módulos
-Para resolver este problema emplearemos un cliente de API de Telegram (la telegram Bot API) que recibirá distintas
+Como solución a este problema emplearemos un cliente de API de Telegram (la telegram Bot API) que recibirá distintas
 peticiones de los usuarios por un hook. Este cliente estará divido en los siguientes módulos:
 
 - Interfaz: Define los comandos de interacción con el bot y maneja las peticiones a través del hook devolviéndoles la
