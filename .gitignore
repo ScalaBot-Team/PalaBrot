@@ -1,5 +1,10 @@
+#our
+*~
+*mongodb_data*    
+
+
 .idea/
-.gitignore
+# .gitignore
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
