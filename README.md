@@ -30,3 +30,18 @@ Por último para desarrollar el bot se usa [Canoe](https://github.com/augustjune
 - Blanca Cano Camarero   
 
 Este repositorio ha sido creado gracias a la plantilla  https://jj.github.io/curso-tdd/temas/git
+
+
+## Usuario dirigido   
+
+### Paco Pragmático   
+
+- Usuario medio de telegram.  
+- Quiere consultar el resumen pero sin calentarse la cabeza.   
+- Cómodo, rápido y fácil de usar. 
+
+### Suspicious123  
+
+- Usuario sin miedo a transtear la tecnología.  
+- Receloso con su privacidad (probalemente haya bicheado el código del proyecto).  
+- Quiere controlar el tiempo que los  mensajes permanecen en el servidor.   
