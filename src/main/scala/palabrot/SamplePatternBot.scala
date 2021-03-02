@@ -14,7 +14,7 @@ import fs2.Stream
  */
 object PalabrotBot extends IOApp {
 
-  val token: String = "1688218769:AAH8Mw-WvFwhMy9a2c9XjA_bEpMGfRmjFFs"
+  val token: String = "token"
   val logger = Logger("main logs")
 
   def run(args: List[String]): IO[ExitCode] =
