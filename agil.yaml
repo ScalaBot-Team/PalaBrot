@@ -1,4 +1,6 @@
 personas:
     - Paco Pramágtico
     - Suspicious123
-    
+excepciones:
+    - src/main/scala/palabrot/resources/Exceptions.scala
+
