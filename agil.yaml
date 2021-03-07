@@ -1,3 +1,6 @@
+lenguaje: "sbt"
+taskfile: "Makefile"
+
 personas:
     - Paco Pramágtico
     - Suspicious123
