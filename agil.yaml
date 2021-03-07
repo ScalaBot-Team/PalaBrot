@@ -1,5 +1,5 @@
 lenguaje: "sbt"
-taskfile: "Makefile"
+taskfile: "build.sbt"
 
 personas:
     - Paco Pramágtico
