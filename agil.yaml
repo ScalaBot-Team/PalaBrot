@@ -1,6 +1,6 @@
-lenguaje: "sbt"
+lenguaje: "scala"
 taskfile: "build.sbt"
-
+linter:   "scalafix"
 personas:
     - Paco Pramágtico
     - Suspicious123
