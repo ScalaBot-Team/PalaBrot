@@ -9,9 +9,11 @@ import palabrot.services.{MessageCleaner, Storage, Summarizer}
 import palabrot.utils.Loggers.Caught
 import palabrot.utils._
 
+import scala.util.{Failure, Success, Try}
+
 object MainFlow extends IOApp {
 
-  val token: String = "1688218769:AAEeohAHBHx3AkKfkLoZyWfqoU4RGMGzFMw"
+  val token: String = "token"
 
   def run(args: List[String]): IO[ExitCode] =
     Stream
@@ -30,15 +32,18 @@ object MainFlow extends IOApp {
     for {
       msg <- Scenario.expect(textMessage)
       _   <- {
-        Loggers.main.info(Caught, msg)
-        Scenario.eval(store.addMessage(msg))
-      }
+          Loggers.main.info(Caught, msg)
+          Scenario.eval(store.addMessage(msg))
+        }
     } yield ()
 
   def summarize[F[_]: TelegramClient]: Scenario[F, Unit] =
     for {
       command <- Scenario.expect(command("summarize"))
-      _       <- Scenario.eval(command.chat.send(Summarizer.summary(command)))
+      _       <- Try(command.text.dropWhile(!_.equals(' ')).trim.toInt) match {
+        case Success(value) => Scenario.eval(command.chat.send(Summarizer.summary(command, value)))
+        case Failure(_) => Scenario.eval(command.chat.send("Argumento no válido, usa /summarize número"))
+      }
     } yield ()
 
   def delete[F[_]: TelegramClient](cleaner: MessageCleaner.DBService[F]): Scenario[F, Unit] =
@@ -50,7 +55,7 @@ object MainFlow extends IOApp {
   def help[F[_]: TelegramClient]: Scenario[F, Unit] =
     for {
       command <- Scenario.expect(command("help"))
-      _    <- Scenario.eval(command.chat.send(Helper.display))
+      _       <- Scenario.eval(command.chat.send(Helper.display))
     } yield ()
 
 }

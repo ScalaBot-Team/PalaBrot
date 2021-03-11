@@ -24,7 +24,8 @@ object Loggers {
   }
 
   val main: PalabrotLogger = new PalabrotLogger(Logger("Main logs")){}
-
   val db: PalabrotLogger = new PalabrotLogger(Logger("DB logs")){}
+  val summary: PalabrotLogger = new PalabrotLogger(Logger("Summary logs")){}
+
 
 }

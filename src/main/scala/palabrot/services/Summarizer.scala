@@ -5,9 +5,9 @@ import palabrot.utils.Loggers
 import palabrot.utils.Loggers.Summary
 
 object Summarizer {
-  def summary(command: TextMessage): String = {
-    Loggers.db.info(Summary, command)
+  def summary(command: TextMessage, messagesNumber: Int): String = {
+    Loggers.summary.info(Summary, command)
     //Code for return summary
-    "Summary" //Or SummarizeArgumentsException
+    s"Summary for $messagesNumber messages" //Or SummarizeArgumentsException
   }
 }
