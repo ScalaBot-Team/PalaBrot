@@ -4,13 +4,14 @@ import canoe.api._
 import canoe.syntax.{command, _}
 import cats.effect.{ExitCode, IO, IOApp}
 import fs2.Stream
-import palabrot.persistence.Storage.StorageService
-import palabrot.persistence.{Storage, Summarizer}
-import palabrot.resources._
+import palabrot.services.Storage.DBService
+import palabrot.services.{MessageCleaner, Storage, Summarizer}
+import palabrot.utils.Loggers.Caught
+import palabrot.utils._
 
 object MainFlow extends IOApp {
 
-  val token: String = "1688218769:AAH8Mw-WvFwhMy9a2c9XjA_bEpMGfRmjFFs"
+  val token: String = "1688218769:AAEeohAHBHx3AkKfkLoZyWfqoU4RGMGzFMw"
 
   def run(args: List[String]): IO[ExitCode] =
     Stream
@@ -19,17 +20,17 @@ object MainFlow extends IOApp {
         Bot.polling[IO].follow(
           messageHistory(Storage.elastic),
           summarize,
-          delete(Storage.elastic),
+          delete(MessageCleaner.elastic),
           help
         )
       }
       .compile.drain.as(ExitCode.Success)
 
-  def messageHistory[F[_]: TelegramClient](store: StorageService[F]): Scenario[F, Unit] =
+  def messageHistory[F[_]: TelegramClient](store: DBService[F]): Scenario[F, Unit] =
     for {
       msg <- Scenario.expect(textMessage)
-      _ <- {
-        Loggers.main.info("Message caught", msg)
+      _   <- {
+        Loggers.main.info(Caught, msg)
         Scenario.eval(store.addMessage(msg))
       }
     } yield ()
@@ -37,18 +38,18 @@ object MainFlow extends IOApp {
   def summarize[F[_]: TelegramClient]: Scenario[F, Unit] =
     for {
       command <- Scenario.expect(command("summarize"))
-      _    <- Scenario.eval(command.chat.send(Summarizer.summary(command)))
+      _       <- Scenario.eval(command.chat.send(Summarizer.summary(command)))
     } yield ()
 
-  def delete[F[_]: TelegramClient](cleaner: Storage.StorageService[F]): Scenario[F, Unit] =
+  def delete[F[_]: TelegramClient](cleaner: MessageCleaner.DBService[F]): Scenario[F, Unit] =
     for {
       command <- Scenario.expect(command("delete"))
-      _    <- Scenario.eval(cleaner.deleteMessages(command))
+      _       <- Scenario.eval(cleaner.deleteMessages(command))
     } yield ()
 
   def help[F[_]: TelegramClient]: Scenario[F, Unit] =
     for {
-      command <- Scenario.expect(command("delete"))
+      command <- Scenario.expect(command("help"))
       _    <- Scenario.eval(command.chat.send(Helper.display))
     } yield ()
 

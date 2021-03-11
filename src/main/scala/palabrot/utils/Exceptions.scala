@@ -1,4 +1,4 @@
-package palabrot.resources
+package palabrot.utils
 
 object Exceptions {
   object SummarizeArgumentsException extends RuntimeException
