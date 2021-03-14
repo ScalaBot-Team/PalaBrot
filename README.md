@@ -19,7 +19,9 @@ Para la aplicación es necesario usar distintos servicios y herramientas. En pri
 
 Por otro lado para los logs emplearemos [scala-logging](https://github.com/lightbend/scala-logging) como librería de logs y [Logback](http://logback.qos.ch/) como backend del log.
 
-Por último para desarrollar el bot se usa [Canoe](https://github.com/augustjune/canoe) como wrapper para la API de Telegram el cual a su vez está basado en la librería cats-effects que es una de las librerías básicas para orientar Scala a programación funcional pura. 
+Por último para desarrollar el bot se usa [Canoe](https://github.com/augustjune/canoe) como wrapper para la API de Telegram el cual a su vez está basado en la librería cats-effects que es una de las librerías básicas para orientar Scala a programación funcional pura.
+
+Para los tests se utiliza el framework [MUnit](https://scalameta.org/munit/) con la integración [munit-cats-effect](https://github.com/typelevel/munit-cats-effect) 
 
 ## Instrucciones / Instructions
 
