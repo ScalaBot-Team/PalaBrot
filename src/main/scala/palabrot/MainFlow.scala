@@ -13,7 +13,7 @@ import scala.util.{Failure, Success, Try}
 
 object MainFlow extends IOApp {
 
-  val token: String = "token"
+  val token: String = "1688218769:AAEeohAHBHx3AkKfkLoZyWfqoU4RGMGzFMw"
 
   def run(args: List[String]): IO[ExitCode] =
     Stream
@@ -41,7 +41,7 @@ object MainFlow extends IOApp {
     for {
       command <- Scenario.expect(command("summarize"))
       _       <- Try(command.text.dropWhile(!_.equals(' ')).trim.toInt) match {
-        case Success(value) => Scenario.eval(command.chat.send(Summarizer.summary(command, value)))
+        case Success(value) => Scenario.eval(command.chat.send(Summarizer.elastic.summary(command, value).unsafeRunSync()))
         case Failure(_) => Scenario.eval(command.chat.send("Argumento no válido, usa /summarize número"))
       }
     } yield ()
@@ -57,5 +57,4 @@ object MainFlow extends IOApp {
       command <- Scenario.expect(command("help"))
       _       <- Scenario.eval(command.chat.send(Helper.display))
     } yield ()
-
 }

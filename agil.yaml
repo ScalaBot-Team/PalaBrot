@@ -1,9 +1,12 @@
 lenguaje: "scala"
 taskfile: "build.sbt"
-linter:   "scalafix"
 personas:
-    - Paco Pramágtico
-    - Suspicious123
+  - Paco Pramágtico
+  - Suspicious123
 excepciones:
-    - src/main/scala/palabrot/resources/Exceptions.scala
+  - src/main/scala/palabrot/resources/Exceptions.scala
+linter:   "scalafix"
+test:
+  - build.sbt
+aserciones: "munit"
 
