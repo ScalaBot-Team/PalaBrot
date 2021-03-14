@@ -17,9 +17,8 @@ libraryDependencies += "org.scalameta" %% "munit" % "0.7.22" % Test
 libraryDependencies += "org.typelevel" %% "munit-cats-effect-2" % "0.13.1" % Test
 testFrameworks += new TestFramework("munit.Framework")
 
-
 /** Scalafix configuration */
-val ENABLE_SemanticDB = true
+val ENABLE_SemanticDB = false
 val ENABLE_RemoveUnused = false // required by `RemoveUnused` rule
 
 inThisBuild(
