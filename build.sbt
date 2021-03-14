@@ -33,3 +33,4 @@ scalacOptions ++= {
   if (ENABLE_RemoveUnused) List("-Yrangepos", "-Ywarn-unused")
   else Nil
 }
+
