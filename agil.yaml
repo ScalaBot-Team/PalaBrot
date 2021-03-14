@@ -9,4 +9,6 @@ linter:   "scalafix"
 test:
   - build.sbt
 aserciones: "munit"
-
+testing:
+  runner: sbt
+  framework: munit

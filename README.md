@@ -21,6 +21,21 @@ Por otro lado para los logs emplearemos [scala-logging](https://github.com/light
 
 Por último para desarrollar el bot se usa [Canoe](https://github.com/augustjune/canoe) como wrapper para la API de Telegram el cual a su vez está basado en la librería cats-effects que es una de las librerías básicas para orientar Scala a programación funcional pura. 
 
+## Instrucciones / Instructions
+
+Como gestor de tareas, usamos `sbt` que usa `build.sbt` como archivo de configuración y declaración. Para ejecutar 
+los tests no se debe usar:
+
+```
+build.sbt test
+```
+
+Sino
+
+```
+sbt test
+```
+
 ## Integrantes
 - Juan Helios García Guzmán
 - David Ventas Marín
