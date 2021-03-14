@@ -1,3 +1,10 @@
-language: minimal
+language: scala
 
-script: /bin/true
+jdk: openjdk8
+
+scala:
+  - 2.10.4
+  - 2.12.13
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION test
