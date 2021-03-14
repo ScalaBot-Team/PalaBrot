@@ -6,7 +6,7 @@ import palabrot.utils.Loggers
 import palabrot.utils.Loggers.Summary
 
 object Summarizer {
-  
+
   trait DBService[F[_]] {
     def summary(command: TextMessage, messagesNumber: Int): F[String]
   }
