@@ -4,7 +4,7 @@ personas:
   - Paco Pramágtico
   - Suspicious123
 excepciones:
-  - src/main/scala/palabrot/resources/Exceptions.scala
+  - src/main/scala/palabrot/utils/Exceptions.scala
 linter:   "scalafix"
 test:
   - build.sbt
