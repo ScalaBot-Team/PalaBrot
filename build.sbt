@@ -13,6 +13,7 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 
 /** Testing */
+
 libraryDependencies += "org.scalameta" %% "munit" % "0.7.22" % Test
 libraryDependencies += "org.typelevel" %% "munit-cats-effect-2" % "0.13.1" % Test
 testFrameworks += new TestFramework("munit.Framework")
@@ -33,3 +34,4 @@ scalacOptions ++= {
   if (ENABLE_RemoveUnused) List("-Yrangepos", "-Ywarn-unused")
   else Nil
 }
+

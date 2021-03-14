@@ -13,7 +13,7 @@ import scala.util.{Failure, Success, Try}
 
 object MainFlow extends IOApp {
 
-  val token: String = "1688218769:AAEeohAHBHx3AkKfkLoZyWfqoU4RGMGzFMw"
+  val token: String = "token"
 
   def run(args: List[String]): IO[ExitCode] =
     Stream
