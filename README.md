@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ScalaBot-Team/PalaBrot.svg?branch=master)](https://travis-ci.org/ScalaBot-Team/PalaBrot)
+![Actions](https://github.com/ScalaBot-Team/PalaBrot/actions/workflows/scala.yml/badge.svg)
 # PalaBrot: Un bot para hacer las conversaciones menos peñazo 
 
 PalaBrot es un bot de Telegram que resume a través de distintas técnicas de procesamiento del lenguaje natural los
