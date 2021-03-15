@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    env:
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
 
     runs-on: ubuntu-latest
 
