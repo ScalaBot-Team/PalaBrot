@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/ScalaBot-Team/PalaBrot.svg?branch=master)](https://travis-ci.org/ScalaBot-Team/PalaBrot)
 ![Actions](https://github.com/ScalaBot-Team/PalaBrot/actions/workflows/scala.yml/badge.svg)
+[![codecov](https://codecov.io/gh/ScalaBot-Team/PalaBrot/branch/master/graph/badge.svg?token=FATJCF9P7O)](https://codecov.io/gh/ScalaBot-Team/PalaBrot)
 # PalaBrot: Un bot para hacer las conversaciones menos peñazo 
 
 PalaBrot es un bot de Telegram que resume a través de distintas técnicas de procesamiento del lenguaje natural los
@@ -28,16 +29,21 @@ Para los tests se utiliza el framework [MUnit](https://scalameta.org/munit/) con
 ## Instrucciones / Instructions
 
 Como gestor de tareas, usamos `sbt` que usa `build.sbt` como archivo de configuración y declaración. Para ejecutar 
-los tests no se debe usar:
+los tests **NO** se debe usar:
 
 ```
 build.sbt test
+build.sbt coverage
 ```
 
-Sino
+Sino esta secuencia de comandos, que incluyen los necesarios para habilitar la generación de informes de cobertura
+realizar los tests y generar el informe de cobertura
 
 ```
+sbt clean
+sbt coverage
 sbt test
+sbt coverageReport
 ```
 
 ## Integrantes
