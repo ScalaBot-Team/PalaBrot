@@ -20,7 +20,7 @@ testFrameworks += new TestFramework("munit.Framework")
 
 /** Scalafix configuration */
 val ENABLE_SemanticDB = true
-val ENABLE_RemoveUnused = false // required by `RemoveUnused` rule
+val ENABLE_RemoveUnused = true // required by `RemoveUnused` rule
 
 inThisBuild(
   List(
