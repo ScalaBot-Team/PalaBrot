@@ -6,4 +6,7 @@ scala:
   - 2.13.4
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION test
+  - sbt ++$TRAVIS_SCALA_VERSION clean coverage test coverageReport
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

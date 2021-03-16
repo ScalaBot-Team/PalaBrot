@@ -20,14 +20,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Clean
-      run: sbt clean
-    - name: Enable coverage
-      run: sbt coverage
     - name: Run tests
-      run: sbt test
-    - name: Gen coverage report
-      run: sbt coverageReport
+      run: sbt clean coverage test coverageReport
     - name: Codecov report
       if: ${{ success() }}
       run: bash <(curl -t CODECOV_TOKEN -s https://codecov.io/bash)
