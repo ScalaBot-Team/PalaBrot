@@ -33,3 +33,10 @@ scalacOptions ++= {
   if (ENABLE_RemoveUnused) List("-Yrangepos", "-Ywarn-unused")
   else Nil
 }
+
+/** Elastic Search */
+ val elastic4sVersion = "7.10.3"
+libraryDependencies ++= Seq(
+  "com.sksamuel.elastic4s" %% "elastic4s-client-esjava" % elastic4sVersion,
+  "com.sksamuel.elastic4s" %% "elastic4s-testkit" % elastic4sVersion % "test"
+)

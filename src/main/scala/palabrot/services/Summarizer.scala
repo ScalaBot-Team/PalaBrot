@@ -7,13 +7,9 @@ import palabrot.utils.Loggers.Summary
 
 object Summarizer {
 
-  trait DBService[F[_]] {
-    def summary(command: TextMessage, messagesNumber: Int): F[String]
-  }
-
-  val elastic: DBService[IO] = (command: TextMessage, messagesNumber: Int) => {
-    Loggers.summary.info(Summary, command)
-    //Code for return summary
-    IO.pure(s"Summary for $messagesNumber messages") //Or SummarizeArgumentsException
-  }
+  def summary(command: TextMessage, messagesNumber: Int, db: MessageRepository): IO[String] = {
+      Loggers.summary.info(Summary, command)
+      //Code for return summary
+      db.getMessagesFromChat(messagesNumber, command.chat)
+    }
 }

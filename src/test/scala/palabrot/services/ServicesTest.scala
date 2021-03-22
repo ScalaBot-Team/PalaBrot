@@ -1,23 +1,27 @@
 package palabrot.services
-import canoe.models.{Group, User}
+import canoe.models.{Chat, ChatId, Group, User}
 import canoe.models.messages.TextMessage
+import cats.effect.IO
 import munit.CatsEffectSuite
 
 class ServicesTest extends CatsEffectSuite {
 
-  val sampleUser = User(1,false,"Test Name", None, None, None, None, None, None)
-  val sampleGroup = Group(1,Some("Test Group"))
-  val sampleMessage = TextMessage(1, sampleGroup,1,"Test Message",None,Some(sampleUser))
+  val testUser = User(1, false, "Test Name", None, None, None, None, None, None)
+  val testGroup = Group(1, Some("Test Group"))
+  val testMessage = TextMessage(1, testGroup, 1, "Test Message", None, Some(testUser))
 
-  test("MessageCleaner returns IO[Boolean] when is required to delete messages history") {
-    MessageCleaner.elastic.deleteMessages(sampleMessage).assertEquals(true)
+  val testDB: MessageRepository = new MessageRepository {
+    override def addMessage(message: TextMessage): IO[Unit] = IO.unit
+    override def getMessagesFromChat(num: Int, chat: Chat): IO[String] = chat match {
+      case Group(_, Some(title)) => IO.pure (s"Summary of $num messages from chat $title")
+      case _ => IO.pure("Test failed")
+    }
+    override def deleteMessage(chatId: ChatId): IO[Unit] = IO.unit
   }
 
-  test("Summarizer returns summary from n(100) messages") {
-    Summarizer.elastic.summary(sampleMessage,100).assertEquals("Summary for 100 messages")
+  test("Summarizer returns summary from n(100) messages from Test Group") {
+    Summarizer.summary(testMessage,100, testDB)
+      .assertEquals("Summary of 100 messages from chat Test Group")
   }
 
-  test("Storage returns IO[Boolean] when a message is stored succesfuly") {
-    Storage.elastic.addMessage(sampleMessage).assertEquals(true)
-  }
 }

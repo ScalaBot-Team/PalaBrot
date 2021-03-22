@@ -6,6 +6,8 @@ personas:
 excepciones:
   - src/main/scala/palabrot/utils/Exceptions.scala
 linter:   "scalafix"
+dateador:
+  - src/main/scala/palabrot/services/ElasticRepository.scala
 test:
   - build.sbt
 aserciones: "munit"
