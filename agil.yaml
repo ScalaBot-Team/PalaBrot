@@ -6,11 +6,11 @@ personas:
 excepciones:
   - src/main/scala/palabrot/utils/Exceptions.scala
 linter:   "scalafix"
-dateador:
-  - src/main/scala/palabrot/services/ElasticRepository.scala
+dateador: "ElasticRepository.scala"
 test:
   - build.sbt
 aserciones: "munit"
 testing:
   runner: sbt
   framework: munit
+
