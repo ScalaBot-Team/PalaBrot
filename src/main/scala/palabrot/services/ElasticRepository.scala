@@ -15,16 +15,16 @@ class ElasticRepository(client: ElasticClient, index: String) extends MessageRep
       s""" { "chatId" : "${t.chat.id}", "text" : "${t.text}", "date" : "${t.date}", "user" : "${t.from.getOrElse("unknown")}" } """
   }
 
-  override def addMessage(message: TextMessage): IO[Unit] = {
+  override def addMessage(message: TextMessage): IO[Boolean] = {
     client.execute(indexInto(index).doc(message))
-    IO.unit
+    IO.pure(true)
   }
 
-  override def getMessagesFromChat(num: Int, chat: Chat): IO[String] =
-    IO.pure(client.execute(get("chatId", s"${chat.id}")).mapTo[String].value.get.get  )
+  override def getMessagesFromChat(num: Int, chat: Chat): IO[List[String]] =
+    IO.pure(client.execute(get("chatId", s"${chat.id}")).mapTo[String].value.get.get :: Nil)
 
-  override def deleteMessage(chatId: ChatId): IO[Unit] = {
+  override def deleteMessage(chatId: ChatId): IO[Boolean] = {
     client.execute(deleteById("chatId", s"$chatId"))
-    IO.unit
+    IO.pure(true)
   }
 }

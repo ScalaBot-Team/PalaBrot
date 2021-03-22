@@ -11,13 +11,14 @@ class ServicesTest extends CatsEffectSuite {
   val testMessage = TextMessage(1, testGroup, 1, "Test Message", None, Some(testUser))
 
   val testDB: MessageRepository = new MessageRepository {
-    override def addMessage(message: TextMessage): IO[Unit] = IO.unit
-    override def getMessagesFromChat(num: Int, chat: Chat): IO[String] = chat match {
-      case Group(_, Some(title)) => IO.pure (s"Summary of $num messages from chat $title")
-      case _ => IO.pure("Test failed")
+    override def addMessage(message: TextMessage): IO[Boolean] = IO.pure(true)
+    override def getMessagesFromChat(num: Int, chat: Chat): IO[List[String]] = chat match {
+      case Group(_, Some(title)) => IO.pure (s"Summary of $num messages from chat $title" :: Nil)
+      case _ => IO.pure("Test failed" :: Nil)
     }
-    override def deleteMessage(chatId: ChatId): IO[Unit] = IO.unit
+    override def deleteMessage(chatId: ChatId): IO[Boolean] = IO.pure(true)
   }
+
 
   test("Summarizer returns summary from n(100) messages from Test Group") {
     Summarizer.summary(testMessage,100, testDB)

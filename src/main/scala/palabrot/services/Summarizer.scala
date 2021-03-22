@@ -10,6 +10,6 @@ object Summarizer {
   def summary(command: TextMessage, messagesNumber: Int, db: MessageRepository): IO[String] = {
       Loggers.summary.info(Summary, command)
       //Code for return summary
-      db.getMessagesFromChat(messagesNumber, command.chat)
+      db.getMessagesFromChat(messagesNumber, command.chat).flatMap(l => IO.pure(l.mkString(" ")))
     }
 }
